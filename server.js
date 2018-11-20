@@ -2,7 +2,6 @@ const express = require('express'),
   graphqlHTTP = require('express-graphql'),
   app = express(),
   schema = require('./schema'),
-  morgan = require('morgan'),
   cors = require('cors'),
   path = require('path');
 //  Cors middleware
@@ -13,8 +12,6 @@ app.use(
     methods: ['GET']
   })
 );
-// Morgan middleware
-app.use(morgan('dev'));
 // Set graphqlHTTP
 app.use('/graphql', graphqlHTTP({ schema, graphiql: false }));
 // Static folder
