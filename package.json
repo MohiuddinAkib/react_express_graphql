@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "watch": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
     "graphql",
@@ -16,6 +18,8 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",

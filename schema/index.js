@@ -17,17 +17,18 @@ const RoouQuery = new GraphQLObjectType({
   description: 'Center for gathering all sub queries',
   fields: {
     launches: {
+      name: 'LaunchesQuery',
       type: new GraphQLList(LaunchType),
       resolve: () => axios.get('/launches').then(res => res.data)
     },
     launch: {
       type: LaunchType,
       args: {
-        filght_number: { type: GraphQLInt }
+        flight_number: { type: GraphQLInt }
       },
       resolve: async (parent, args) => {
         try {
-          const { data } = await axios.get(`/launches/${args.filght_number}`);
+          const { data } = await axios.get(`/launches/${args.flight_number}`);
           return data;
         } catch (error) {
           console.log(error);
